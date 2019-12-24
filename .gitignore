@@ -1,0 +1,21 @@
+.DS_Store
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Migrations:
+*/*/migrations/0*
+
+# Cache:
+*/*/__pycache__/
+__pycache__/
+*.pyc
+
+# DB:
+*/db.sql*
+
+media/
+*_env/
