@@ -5,10 +5,13 @@
     <title>kaftClone </title>
 </head>
 <body>
+    {% include 'base/components/message.html' %}
     {% include 'base/components/nav.html' %}
     {% block content %}
     {% endblock %}
     {% include 'base/components/footer.html' %}
     {% include 'base/components/footer_scripts.html' %}
+    {% block script %}
+    {% endblock %}
 </body>
 </html>

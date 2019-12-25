@@ -1,5 +1,7 @@
 from django.db import models
 
+DEFAULT_STATUS = "draft"
+
 STATUS = [
   ('draft', 'Taslak'),
   ('published', 'Yayinlandi'),
@@ -13,9 +15,26 @@ class Page(models.Model):
   content = models.TextField()
   cover_image = models.ImageField(upload_to='page', null=True, blank=True)
   status = models.CharField(
-    default="draft",
+    default=DEFAULT_STATUS,
     choices=STATUS,
     max_length=10,
+  )
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
+
+
+class Carousel(models.Model):
+  title = models.CharField(max_length=200, blank=True, null=True)
+  cover_image = models.ImageField(
+    upload_to='carousel',
+    null=True,
+    blank=True,
+  )
+  status = models.CharField(
+    default = DEFAULT_STATUS,
+    choices = STATUS,
+    max_length=10
+
   )
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
