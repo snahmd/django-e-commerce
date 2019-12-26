@@ -6,20 +6,20 @@ from .forms import CarouselModelForm
 # Create your views here.
 def index(request):
   context = dict()
-  context ['images'] = Carousel.objects.filter(status="published")
+  context ['images'] = Carousel.objects.filter(status="published").exclude(cover_image = '')
   return render(request, 'home/index.html', context)
   
 
 def carousel_list(request):
   context = dict()
-  context['carousel'] = Carousel.objects.all() 
+  context['carousel'] = Carousel.objects.all().order_by('-pk') 
   return render(request, 'manage/carousel_list.html', context)
 
 
 def carousel_update(request, pk):
   context = dict()
   context['item'] = Carousel.objects.get(pk=pk)
-  return render(request, 'manage/carousel_create.html', context)
+  return render(request, 'manage/carousel_update.html', context)
 
 
 def carousel_create(request):
@@ -28,8 +28,8 @@ def carousel_create(request):
   #item = Carousel.objects.first()
   #context['form'] = CarouselModelForm(instance=item)
   if request.method == "POST":
-    print (request.POST)
-    print (request.FILES['cover_image'])
+    print(request.POST)
+    print(request.FILES('cover_image'))
     #carousel = Carousel.objects.create(
     #  title=request.POST.get('title')
     #)
