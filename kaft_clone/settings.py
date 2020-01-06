@@ -46,6 +46,11 @@ INSTALLED_APPS = [
     'product',
 ]
 
+if os.environ.get('DJANGO_DEBUG') == 'True':
+    INSTALLED_APPS += [
+        'django_extensions',
+    ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
